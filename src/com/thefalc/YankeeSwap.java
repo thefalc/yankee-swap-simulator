@@ -297,7 +297,7 @@ class StealNearlyDeadGift implements Strategy {
       // Apply strategy for player that was stolen from
       playerToStealFrom.strategy.applyStrategy(playerToStealFrom, game);
     }
-    else { // Open random gift
+    else { // Select best available option
       new AlwaysSteal().applyStrategy(currentPlayer, game);
     }
   }

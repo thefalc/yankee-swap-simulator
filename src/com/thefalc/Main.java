@@ -59,9 +59,6 @@ public class Main {
             List<Player> players = initPlayers(totalPlayers);
             YankeeSwap yankeeSwap = new YankeeSwap(players, gifts, maxSteals, letPlayerOneGoAgain);
 
-            // Randomize order of play
-            Collections.shuffle(players);
-
             while(gifts.size() > 0) {
                 yankeeSwap.playGame();
             }
