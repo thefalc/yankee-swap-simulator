@@ -44,7 +44,6 @@ public class Main {
         ? Boolean.parseBoolean(args[3]) : GameUtilities.DEFAULT_PLAYER_ONE_PLAY_AGAIN;
 
     strategies.add(new AlwaysOpen());
-//    strategies.add(new AlwaysOpenGreedySteal());
     strategies.add(new AlwaysSteal());
     strategies.add(new StealOnCoinFlip());
     strategies.add(new StealAboveMean());
