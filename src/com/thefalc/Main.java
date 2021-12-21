@@ -44,6 +44,7 @@ public class Main {
         ? Boolean.parseBoolean(args[3]) : GameUtilities.DEFAULT_PLAYER_ONE_PLAY_AGAIN;
 
     strategies.add(new AlwaysOpen());
+//    strategies.add(new AlwaysOpenGreedySteal());
     strategies.add(new AlwaysSteal());
     strategies.add(new StealOnCoinFlip());
     strategies.add(new StealAboveMean());
@@ -71,6 +72,10 @@ public class Main {
     System.out.println();
     System.out.println("STRATEGY STATS");
     showStrategyStats(gamesLog);
+
+    System.out.println();
+    System.out.println("STRATEGY BY POSITION STATS");
+    showStrategyByPositionStats(gamesLog);
   }
 
   /**
@@ -115,6 +120,40 @@ public class Main {
       double averageValue = giftValuesByStrategy[i] / totalTimeStrategyWasUsed[i];
 
       System.out.println(strategies.get(i).getClass().getCanonicalName() + ", " + averageValue);
+    }
+  }
+
+  /**
+   * Goes through all simulated games and computes the mean gift value at different stages of the game
+   * and based on the strategy used.
+   */
+  private static void showStrategyByPositionStats(List<List<Player>> gamesLog) {
+    int totalGameStages = 3;
+    double positionByStrategy[][] = new double[totalGameStages][strategies.size()];
+    int totalTimeStrategyWasUsed[][] = new int[totalGameStages][strategies.size()];
+    String positionName[] = new String[]{"EARLY", "MID", "LATE"};
+
+    int playerDivider = gamesLog.get(0).size() / totalGameStages;
+
+    // Go through each game
+    for (List<Player> players : gamesLog) {
+      // Add gift value based on selection position
+      for (Player player : players) {
+        // Converts player index to a game stage (early, mid, or late)
+        int positionalIndex = ((player.index - 1) / playerDivider);
+        int strategyIndex = getStrategyIndex(player.strategy);
+
+        positionByStrategy[positionalIndex][strategyIndex] += player.gift.value;
+        totalTimeStrategyWasUsed[positionalIndex][strategyIndex]++;
+      }
+    }
+
+    for (int i = 0; i < positionByStrategy.length; i++) {
+      System.out.println("GAME POSITION: " + positionName[i]);
+      for (int j = 0; j < positionByStrategy[i].length; j++) {
+        double averageValue = positionByStrategy[i][j] / totalTimeStrategyWasUsed[i][j];
+        System.out.println(strategies.get(j).getClass().getCanonicalName() + ", " + averageValue);
+      }
     }
   }
 
