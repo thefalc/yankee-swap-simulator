@@ -268,7 +268,7 @@ class StealAboveMean implements Strategy {
  * Steal a gift if one exists with a value above the mean value of the currently
  * unwrapped gifts and it is about to be no longer be available to steal.
  */
-class StealNearlyDeadGift implements Strategy {
+class OptimizeForNoSteals implements Strategy {
   public void applyStrategy(Player currentPlayer, YankeeSwap game) {
     double highestValueItem = 0;
     double mean = 0;

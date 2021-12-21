@@ -48,7 +48,7 @@ public class Main {
     strategies.add(new AlwaysSteal());
     strategies.add(new StealOnCoinFlip());
     strategies.add(new StealAboveMean());
-    strategies.add(new StealNearlyDeadGift());
+    strategies.add(new OptimizeForNoSteals());
 
     // Run game simulation
     for (int i = 0; i < iterations; i++) {
