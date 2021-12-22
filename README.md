@@ -1,6 +1,10 @@
 # Yankee Swap (White Elephant/Bad Santa) Simulator
 
-This code sample simulates the Yankee Swap holiday gift exchange game applying various strategies. 
+This code sample simulates the Yankee Swap holiday gift exchange game applying various strategies.
+
+Check out this [article](https://thefalc.com/2021/12/the-optimal-white-elephant-strategy/) for a analytical
+breakdown of which strategies work best and how your position in the game impacts your ability to receive
+a great gift.
 
 ## Game assumptions
 
