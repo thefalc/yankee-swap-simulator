@@ -74,4 +74,4 @@ java -cp out com.thefalc.Main NUM_OF_PLAYERS NUM_OF_ITERATIONS NUM_OF_STEALS PLA
 
 Where `NUM_OF_PLAYERS` is how many players are participating in the simulation, `NUM_OF_ITERATIONS` is how many
 times to run the simulation, `NUM_OF_STEALS` is the maximum times an item can be stolen, and `PLAYER_ONE_PLAYS_AGAIN` is
-true|false representing whether the first player gets to play again at the end of the game.
+true|false representing whether the first player gets to play again at the end of the game
